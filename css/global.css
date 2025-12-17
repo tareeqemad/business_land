@@ -1,0 +1,461 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: system-ui, -apple-system, blinkmacsystemfont, "segoe ui", sans-serif;
+    color: #0b1f33;
+    background-color: #f5f7fb;
+    line-height: 1.6;
+}
+
+/* TYPOGRAPHY */
+
+h1,
+h2,
+h3 {
+    font-family: "segoe ui", system-ui, -apple-system, sans-serif;
+    color: #0b1f33;
+    letter-spacing: 0.03em;
+}
+
+h1 {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 1.9rem;
+    margin-bottom: 0.75rem;
+}
+
+h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    color: #334155;
+}
+
+/* LINKS */
+
+a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* LAYOUT SECTIONS */
+
+.site-header {
+    background: linear-gradient(135deg, #0b1f33 0%, #1e293b 50%, #020617 100%);
+    color: #e5e7eb;
+}
+
+main {
+    min-height: 60vh;
+}
+
+.section {
+    padding: 4rem 1.5rem;
+}
+
+.section--light {
+    background-color: #f5f7fb;
+}
+
+.section--dark {
+    background-color: #0b1f33;
+    color: #e5e7eb;
+}
+
+.section__header {
+    max-width: 960px;
+    margin: 0 auto 2rem;
+    text-align: center;
+}
+
+.section__header p {
+    max-width: 600px;
+    margin: 0.5rem auto 0;
+}
+
+/* NAVBAR (FLEXBOX) */
+
+.navbar {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    transition: background-color 0.3s ease, padding 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.navbar--scrolled {
+    padding: 0.75rem 1.5rem;
+}
+
+.navbar__brand {
+    display: flex;
+    align-items: center;
+    z-index: 1001;
+}
+
+.navbar__logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #e5e7eb;
+    transition: transform 0.3s ease;
+}
+
+.navbar__logo:hover {
+    transform: scale(1.05);
+    text-decoration: none;
+}
+
+.navbar__logo span {
+    color: #38bdf8;
+}
+
+/* Hamburger Menu Toggle */
+.navbar__toggle {
+    display: none;
+    flex-direction: column;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+    gap: 4px;
+}
+
+.navbar__toggle-icon {
+    width: 24px;
+    height: 3px;
+    background-color: #e5e7eb;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.navbar__toggle--active .navbar__toggle-icon:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.navbar__toggle--active .navbar__toggle-icon:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar__toggle--active .navbar__toggle-icon:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.navbar__links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-link {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #cbd5f5;
+    transition: color 0.3s ease, transform 0.2s ease;
+    position: relative;
+    padding: 0.25rem 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #38bdf8;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link--active::after {
+    width: 100%;
+}
+
+.nav-link--active {
+    color: #38bdf8;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+/* BUTTONS */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 0;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.btn-text {
+    position: relative;
+    z-index: 1;
+    transition: opacity 0.3s ease;
+}
+
+.btn-loader {
+    display: none;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.btn--primary {
+    background-color: #2563eb;
+    color: #f9fafb;
+}
+
+.btn--primary:hover:not(:disabled) {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+.btn--secondary {
+    background-color: #e2e8f0;
+    color: #0b1f33;
+}
+
+.btn--secondary:hover {
+    background-color: #cbd5f5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* FOOTER */
+
+.site-footer {
+    background-color: #020617;
+    color: #9ca3af;
+    padding: 2rem 1.5rem;
+}
+
+.footer__content {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer__address a {
+    color: #e5e7eb;
+}
+
+/* SMOOTH SCROLLING */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ANIMATIONS */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* RESPONSIVE LAYOUT */
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: nowrap;
+        position: relative;
+        width: 100%;
+    }
+
+    .navbar__brand {
+        flex: 1;
+    }
+
+    .navbar__toggle {
+        display: flex;
+        order: 2;
+    }
+
+    .navbar__links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        flex-direction: column;
+        background-color: rgba(11, 31, 51, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 5rem 1.5rem 2rem;
+        gap: 0;
+        transform: translateX(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+        z-index: 1000;
+        overflow-y: auto;
+        width: 100%;
+        max-width: 100%;
+        box-shadow: none;
+    }
+
+    .navbar__links--open {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .navbar__links li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin: 0;
+    }
+
+    .navbar__links li:last-child {
+        border-bottom: none;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 1.25rem 0;
+        width: 100%;
+        font-size: 1.1rem;
+        text-align: left;
+        color: #e5e7eb;
+        transition: color 0.3s ease, padding-left 0.3s ease;
+    }
+
+    .nav-link:hover {
+        color: #38bdf8;
+        padding-left: 1rem;
+        text-decoration: none;
+        transform: none;
+    }
+
+    .nav-link--active {
+        color: #38bdf8;
+        font-weight: 600;
+    }
+
+    .nav-link::after {
+        display: none;
+    }
+
+    body.nav-open {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+    }
+
+    .section {
+        padding: 3rem 1.25rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0.75rem 1rem;
+    }
+
+    .navbar__logo {
+        font-size: 1.2rem;
+    }
+
+    .navbar__toggle {
+        padding: 0.4rem;
+    }
+
+    .navbar__toggle-icon {
+        width: 22px;
+        height: 2.5px;
+    }
+}
