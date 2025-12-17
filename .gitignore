@@ -71,3 +71,6 @@ $RECYCLE.BIN/
 # Setup instructions (optional - remove if you want to include it)
 GITHUB_SETUP.md
 
+# GitHub workflows
+.github/
+
